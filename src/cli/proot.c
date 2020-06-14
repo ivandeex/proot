@@ -188,6 +188,7 @@ static int handle_option_i(Tracee *tracee, const Cli *cli UNUSED, const char *va
 
 static int handle_option_0(Tracee *tracee, const Cli *cli, const char *value UNUSED)
 {
+	(void) initialize_extension(tracee, audit_log_callback, NULL);
 	return handle_option_i(tracee, cli, "0:0");
 }
 

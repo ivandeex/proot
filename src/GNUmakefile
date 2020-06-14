@@ -76,6 +76,7 @@ OBJECTS += \
 	extension/hidden_files/hidden_files.o \
 	extension/port_switch/port_switch.o \
 	extension/link2symlink/link2symlink.o \
+	extension/audit_log/audit_log.o \
 	extension/fix_symlink_size/fix_symlink_size.o
 
 define define_from_arch.h
