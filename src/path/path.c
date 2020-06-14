@@ -413,11 +413,11 @@ int detranslate_path(Tracee *tracee, char path[PATH_MAX], const char t_referrer[
 
 	/* Don't try to detranslate relative paths (typically the
 	 * target of a relative symbolic link). */
-	if (path[0] != '/')
+	if (path[0] != '/' || path[0] == 0)
 		return 0;
 
 	/* Is it a symlink?  */
-	if (t_referrer != NULL) {
+	if (t_referrer != NULL && t_referrer[0] != 0) {
 		Comparison comparison;
 
 		sanity_check = false;
@@ -543,8 +543,6 @@ Comparison compare_paths2(const char *path1, size_t length1, const char *path2, 
 	assert(length(path1) == length1);
 	assert(length(path2) == length2);
 #endif
-	assert(length1 > 0);
-	assert(length2 > 0);
 
 	if (!length1 || !length2) {
 		return PATHS_ARE_NOT_COMPARABLE;
